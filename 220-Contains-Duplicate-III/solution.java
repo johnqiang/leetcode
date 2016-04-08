@@ -7,7 +7,7 @@ public class Solution {
                     return true;
                 }
             }
-            map.put(nums[i], i);
+            map.put(i, nums[i]);
         }
         return false;
     }
