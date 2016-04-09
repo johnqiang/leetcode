@@ -3,14 +3,17 @@ public class Solution {
         if (nums.length < 2)
             return;
         // int[] temp = Arrays.copyOf(nums, nums.length); // copy array cost O(n) extra space
-        int index = 0;
-        int temp0 = nums[0];
-        int temp1 = nums[0];
-        for(int i = 0; i < nums.length; i++) {
-            temp0 = temp1;
-            temp1 = nums[(index+k)%nums.length]; // now extra space O(1)
-            nums[(index+k)%nums.length] = temp0;
-            index = (index+k)%nums.length;
+        reverse(nums, 0, nums.length-k-1);
+        reverse(nums, nums.length-k, nums.length-1);
+        reverse(nums, 0, nums.length-1);
+    }
+    public static void reverse(int[] nums, int left, int right) {
+        while(left < right) {
+            int temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+            left++;
+            right--;
         }
     }
 }
