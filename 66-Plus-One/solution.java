@@ -1,21 +1,19 @@
 public class Solution {
     public int[] plusOne(int[] digits) {
-        int i = digits.length-1;
-        int sum = digits[i]+1;
-        while(sum == 10) {
-            digits[i] = 0;
-            if(i == 0) {
-                int[] temp = new int[digits.length+1];
-                for(int j = 0; j < digits.length; j++) {
-                    temp[j+1] = digits[j];
-                }
-                temp[0] = 1;
-                return temp;
-            }
-            i--;
-            sum = digits[i]+1;
+        // sample code from 'http://blog.csdn.net/linhuanmars/article/details/22365957'
+        if (digits == null || digits.length == 0)
+            return digits;
+        int carry = 1;
+        for (int i = digits.length-1; i >= 0; i--) {
+            int digit = (digits[i]+carry)%10;
+            carry = (digits[i]+carry)/10;
+            digits[i] = digit;
+            if(carry == 0)
+                return digits;
         }
-        digits[i]++;
-        return digits;
+        // improved
+        int[] temp = new int[digits.length+1];
+        temp[0] = 1;
+        return temp;
     }
 }
