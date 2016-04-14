@@ -8,10 +8,10 @@ public class Solution {
 				sum += nums[right++];
 			}
 			while(sum >= s){
-				min = Math.min(min, right-left+1);
+				min = Math.min(min, right-left);
 				sum -= nums[left++];
 			}
 		}
-		return min-1;
+		return min;
     }
 }
